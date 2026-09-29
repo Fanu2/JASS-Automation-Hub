@@ -1,0 +1,66 @@
+<Window x:Class="JASS.AutomationHub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="JASS Automation Hub"
+        Width="1280" Height="760" MinWidth="1000" MinHeight="620"
+        Background="{StaticResource BgBrush}"
+        Foreground="{StaticResource TextBrush}"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="#0D1426" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
+            <DockPanel Margin="14">
+                <StackPanel DockPanel.Dock="Top">
+                    <StackPanel Orientation="Horizontal" Margin="6,8,6,26">
+                        <Border Width="42" Height="42" CornerRadius="12" Background="{StaticResource AccentBrush}">
+                            <TextBlock Text="J" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Margin="11,0,0,0">
+                            <TextBlock Text="JASS" FontSize="21" FontWeight="Bold"/>
+                            <TextBlock Text="Automation Hub" Foreground="{StaticResource MutedBrush}" FontSize="11"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Content="⌂   Dashboard" Style="{StaticResource NavButton}" Click="Dashboard_Click"/>
+                    <Button Content="⚙   Automations" Style="{StaticResource NavButton}" Click="Automations_Click"/>
+                    <Button Content="◇   Workflow Designer" Style="{StaticResource NavButton}" Click="Designer_Click"/>
+                    <Button Content="▶   Runs &amp; History" Style="{StaticResource NavButton}" Click="History_Click"/>
+                    <Button Content="▣   Templates" Style="{StaticResource NavButton}" Click="Templates_Click"/>
+                    <Button Content="▤   Logs" Style="{StaticResource NavButton}" Click="Logs_Click"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Bottom">
+                    <Border Background="#111A31" CornerRadius="12" Padding="12" Margin="3,18,3,8">
+                        <StackPanel>
+                            <TextBlock Text="LOCAL-FIRST" FontWeight="Bold" Foreground="{StaticResource Accent2Brush}"/>
+                            <TextBlock Text="Workflows, history and variables stay on this PC." TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}" Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Button Content="⚙   Settings" Style="{StaticResource NavButton}" Click="Settings_Click"/>
+                    <TextBlock Text="JASS Automation Hub  •  v1.1" Foreground="#667394" FontSize="10" Margin="12,8"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Margin="28">
+            <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Margin="0,0,0,20">
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock x:Name="PageTitle" Text="Automation Dashboard" FontSize="29" FontWeight="Bold"/>
+                    <TextBlock x:Name="PageSubtitle" Text="Build, run and manage your Windows automations." Foreground="{StaticResource MutedBrush}" Margin="0,5,0,0"/>
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="↻ Refresh" Click="Refresh_Click"/>
+                    <Button Content="+ New Automation" Style="{StaticResource PrimaryButton}" Click="NewAutomation_Click"/>
+                </StackPanel>
+            </DockPanel>
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto">
+                <ContentControl x:Name="MainContent"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
